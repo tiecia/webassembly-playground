@@ -113,8 +113,8 @@ int main()
 {
   int64_t limit = 10;
 
-  //Stop whenever the segmented_sieve call last more than 1.0 seconds
-  while (wrapper_segmented_sieve(limit) < 1.0)
+  //Stop whenever the segmented_sieve call last more than 20.0 seconds
+  while (wrapper_segmented_sieve(limit) < 20.0)
   {
     limit *= 10;
   }

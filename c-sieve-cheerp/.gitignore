@@ -1,2 +1,4 @@
 .direnv
 result
+segmented_sieve_wasm*
+segmented_sieve.js
