@@ -1,5 +1,5 @@
 {
-  description = "A basic flake with a shell";
+  description = "A shell that exposes the Cheerp compiler";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
@@ -128,18 +128,15 @@
         };
       in
       {
-        defaultPackage = cheerp.packages.${system};
-        # defaultPackage = cheerp;
+        defaultPackage = cheerp;
 
         devShells.default = pkgs.mkShell { 
-          packages = let
-            cheerp = cheerp.packages.${system};
-          in[ 
+          packages = [ 
             pkgs.bashInteractive 
             pkgs.nodejs
             pkgs.wabt
-        ];
-      };
+          ];
+        };
       }
     );
 }
