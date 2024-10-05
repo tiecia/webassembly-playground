@@ -22,6 +22,11 @@
             sha256 = "yDX5Pq2bKrArwAYNkjWHCJNHHK20LB6kl10FqKaPaxY=";
           };
 
+
+          # See https://ryantm.github.io/nixpkgs/hooks/cmake/#cmake
+          # and https://github.com/NixOS/nixpkgs/issues/344336 for more information
+          dontUseCmakeConfigure = true;
+
           buildInputs = with pkgs; [
             cmake
             python312
