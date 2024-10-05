@@ -132,6 +132,7 @@
 
         devShells.default = pkgs.mkShell { 
           packages = [ 
+            cheerp
             pkgs.bashInteractive 
             pkgs.nodejs
             pkgs.wabt
