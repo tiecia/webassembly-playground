@@ -8,7 +8,18 @@ This example shows running the algorithm in three different ways:
 1. From a .js file produced from the cheerp target `cheerp`
 1. From a WASM module produced from the cheerp target `cheerp-wasm`
 
+#### Prerequisites
+To run these examples you need [cheerp](https://cheerp.io/docs/getting-started/installation) and [NodeJS](https://nodejs.org/en/download/package-manager/current). 
+
+A development shell is provided in the `flake.nix`. This shell builds cheerp from source which can take over 30 minutes.
+
 ## Native g++ Binary
+Run:
+```
+g++ segmented_sieve.cpp -o segmented_sieve -O3
+./segmented_sieve
+```
+Result:
 ```
 5.1522e-05s	to sieve in the interval (1, 10)	4 primes found
 8.5676e-05s	to sieve in the interval (1, 100)	25 primes found
@@ -23,6 +34,12 @@ This example shows running the algorithm in three different ways:
 85.5498s	to sieve in the interval (1, 1e+11)	4118054813 primes found
 ```
 ## JavaScript
+Run:
+```
+<cheerp clang++> -target cheerp segmented_sieve.cpp -o segmented_sieve_wasm.js -O3
+node segmented_sieve.js
+```
+Result:
 ```
 0.003s	to sieve in the interval (1, 10)	4 primes found
 0.002s	to sieve in the interval (1, 100)	25 primes found
@@ -36,6 +53,12 @@ This example shows running the algorithm in three different ways:
 38.242s	to sieve in the interval (1, 1e+10)	455052511 primes found
 ```
 ## WebAssembly
+Run:
+```
+<cheerp clang++> -target cheerp-wasm segmented_sieve.cpp -o segmented_sieve_wasm.js -O3
+node segmented_sieve_wasm.js
+```
+Result:
 ```
 0.001s	to sieve in the interval (1, 10)	4 primes found
 0s	to sieve in the interval (1, 100)	25 primes found
